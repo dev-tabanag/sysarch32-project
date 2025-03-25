@@ -259,6 +259,7 @@
             this.txtSearchBar.Name = "txtSearchBar";
             this.txtSearchBar.Size = new System.Drawing.Size(489, 32);
             this.txtSearchBar.TabIndex = 144;
+            this.txtSearchBar.TextChanged += new System.EventHandler(this.txtSearchBar_TextChanged);
             // 
             // NewCollegeForm
             // 
@@ -276,6 +277,7 @@
             this.Controls.Add(this.txtSearchBar);
             this.Name = "NewCollegeForm";
             this.Text = "NewCollegeForm";
+            this.Load += new System.EventHandler(this.NewCollegeForm_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);

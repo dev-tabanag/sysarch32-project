@@ -17,7 +17,7 @@ namespace SysArch
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new dsadsa());
+            Application.Run(new NewCollegeForm());
         }
     }
 }
