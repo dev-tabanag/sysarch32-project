@@ -52,5 +52,10 @@ namespace SysArch.Services
                 }
             }
         }
+
+        public static void UpdateCollege(int id, string collegeName, string collegeCode, int isActive)
+        {
+           
+        }
     }
 }
