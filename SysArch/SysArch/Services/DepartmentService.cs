@@ -40,5 +40,49 @@ namespace SysArch.Services
             }
         }
 
+        public static void AddCollegeAndDepartment(string collegeName, string departmentName, string departmentCode, int departmentIsActive)
+        {
+            string insertDepartmentQuery = @"INSERT INTO dbo.department(college_id, department_name, department_code, is_active) 
+                                        VALUES (@CollegeId, @DepartmentName, @DepartmentCode, @DepartmentIsActive)";
+
+            string getCollegeId = @"SELECT id FROM dbo.college WHERE college_name = @CollegeName";
+
+            using (SqlConnection connection = new SqlConnection(Connections.dbConnect))
+            {
+                connection.Open();
+                int collegeId;
+
+                using (SqlCommand cmdCollege = new SqlCommand(getCollegeId, connection))
+                {
+                    cmdCollege.Parameters.AddWithValue("@CollegeName", collegeName);
+                    object result = cmdCollege.ExecuteScalar();
+
+                    if (result == null)
+                    {
+                        MessageBox.Show($"College '{collegeName}' not found. Cannot add department.",
+                                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    collegeId = Convert.ToInt32(result);
+                }
+                using (SqlCommand cmdDepartment = new SqlCommand(insertDepartmentQuery, connection))
+                {
+                    cmdDepartment.Parameters.AddWithValue("@CollegeId", collegeId);
+                    cmdDepartment.Parameters.AddWithValue("@DepartmentName", departmentName);
+                    cmdDepartment.Parameters.AddWithValue("@DepartmentCode", departmentCode);
+                    cmdDepartment.Parameters.AddWithValue("@DepartmentIsActive", departmentIsActive);
+
+                    try
+                    {
+                        DbHelpers.ModifyRecords(cmdDepartment);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error adding department: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
     }
 }
