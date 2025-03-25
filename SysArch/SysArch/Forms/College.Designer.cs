@@ -34,7 +34,6 @@
             // 
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Name = "CollegeForm";
-            this.Load += new System.EventHandler(this.CollegeForm_Load);
             this.ResumeLayout(false);
 
         }

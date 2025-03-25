@@ -102,5 +102,54 @@ namespace SysArch.Forms
             }
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string searchTerm = txtSearchBar.Text.Trim();
+
+                if (txtSearchBar.Text != "")
+                {
+                    CollegeService.SearchCollege(searchTerm, dataGridView1);
+                }
+                else
+                {
+                    MessageBox.Show("Input search bar", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    College_Load(sender, e);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void lblViewDepartment_Click(object sender, EventArgs e)
+        {
+            DepartmentForm dept = new DepartmentForm();
+            dept.Show();
+            this.Hide();
+        }
+
+        private void txtSearchBar_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string searchTerm = txtSearchBar.Text.Trim();
+
+                if (txtSearchBar.Text != "")
+                {
+                    CollegeService.SearchCollege(searchTerm, dataGridView1);
+                }
+                else
+                {
+                    College_Load(sender, e);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
