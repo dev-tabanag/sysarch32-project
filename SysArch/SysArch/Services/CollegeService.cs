@@ -55,7 +55,32 @@ namespace SysArch.Services
 
         public static void UpdateCollege(int id, string collegeName, string collegeCode, int isActive)
         {
-           
+            string query = @"
+UPDATE dbo.college 
+SET college_name = @CollegeName,
+    college_code = @CollegeCode,
+    is_active = @IsActive
+WHERE id = @Id";
+
+            using (SqlConnection connection = new SqlConnection(Connections.dbConnect))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@CollegeName", collegeName);
+                    command.Parameters.AddWithValue("@CollegeCode", collegeCode);
+                    command.Parameters.AddWithValue("@IsActive", isActive);
+                    command.Parameters.AddWithValue("@Id", id);
+
+                    try
+                    {
+                        DbHelpers.ModifyRecords(command);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error updating college: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }
