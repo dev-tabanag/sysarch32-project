@@ -84,5 +84,67 @@ namespace SysArch.Services
                 }
             }
         }
+
+        public static void UpdateDepartmentAndCollege(int departmentId,
+                                                    string departmentName,
+                                                    string departmentCode,
+                                                    int departmentIsActive,
+                                                    int collegeId,
+                                                    string collegeName,
+                                                    string collegeCode)
+        {
+
+            string queryDepartment = @"
+            UPDATE dbo.department
+            SET department_name = @DepartmentName,
+                department_code = @DepartmentCode,
+                is_active = @IsActive
+            WHERE id = @Id";
+
+            string queryCollege = @"
+            UPDATE dbo.college
+            SET college_name = @CollegeName,
+                college_code = @CollegeCode
+            WHERE id = @Id";
+
+
+
+            using (SqlConnection connection = new SqlConnection(Connections.dbConnect))
+            {
+                using (SqlCommand cmdDepartment = new SqlCommand(queryDepartment, connection))
+                {
+                    cmdDepartment.Parameters.AddWithValue("@DepartmentName", departmentName);
+                    cmdDepartment.Parameters.AddWithValue("@DepartmentCode", departmentCode);
+                    cmdDepartment.Parameters.AddWithValue("@IsActive", departmentIsActive);
+                    cmdDepartment.Parameters.AddWithValue("@Id", departmentId);
+
+                    try
+                    {
+                        DbHelpers.ModifyRecords(cmdDepartment);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error updating college: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                using (SqlCommand cmdCollege = new SqlCommand(queryCollege, connection))
+                {
+                    cmdCollege.Parameters.AddWithValue("@CollegeName", collegeName);
+                    cmdCollege.Parameters.AddWithValue("@CollegeCode", collegeCode);
+                    cmdCollege.Parameters.AddWithValue("@Id", collegeId);
+
+                    try
+                    {
+                        DbHelpers.ModifyRecords(cmdCollege);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error updating college: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
     }
 }
