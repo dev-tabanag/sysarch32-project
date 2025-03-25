@@ -28,5 +28,10 @@ namespace SysArch.Services
                 }
             }
         }
+
+        public static void AddCollege(string collegeName, string collegeCode, int isActive)
+        {
+            
+        }
     }
 }
