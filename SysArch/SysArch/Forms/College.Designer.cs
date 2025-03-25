@@ -1,6 +1,6 @@
 ﻿namespace SysArch.Forms
 {
-    partial class CollegeForm
+    partial class dsadsa
     {
         /// <summary>
         /// Required designer variable.
@@ -30,10 +30,11 @@
         {
             this.SuspendLayout();
             // 
-            // CollegeForm
+            // dsadsa
             // 
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Name = "CollegeForm";
+            this.ClientSize = new System.Drawing.Size(1154, 693);
+            this.Name = "dsadsa";
+            this.Load += new System.EventHandler(this.dsadsa_Load);
             this.ResumeLayout(false);
 
         }

@@ -21,7 +21,7 @@ namespace SysArch.Forms
 
         private void lblCollege_Click(object sender, EventArgs e)
         {
-            CollegeForm college = new CollegeForm();
+            dsadsa college = new dsadsa();
             college.Show();
             this.Close();
         }

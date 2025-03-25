@@ -13,9 +13,9 @@ using System.Windows.Forms;
 
 namespace SysArch.Forms
 {
-    public partial class CollegeForm : Form
+    public partial class dsadsa : Form
     {
-        public CollegeForm()
+        public dsadsa()
         {
             InitializeComponent();
         }
@@ -150,6 +150,11 @@ namespace SysArch.Forms
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dsadsa_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
