@@ -20,7 +20,7 @@ namespace SysArch.Forms.Modals
 
         private void ViewCollegeTable ()
         {
-            CollegeForm form = new CollegeForm();
+            dsadsa form = new dsadsa();
             form.Show();
             this.Close();
         }
