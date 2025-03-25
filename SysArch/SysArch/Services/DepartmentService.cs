@@ -146,5 +146,31 @@ namespace SysArch.Services
             }
         }
 
+        public static void DeleteDepartmentAndCollege(int deptId, int collegeId)
+        {
+            string deptQuery = @"DELETE FROM dbo.department WHERE id = @Id";
+
+            using (SqlConnection connection = new SqlConnection(Connections.dbConnect))
+            {
+                using (SqlCommand command = new SqlCommand(deptQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", deptId);
+
+                    try
+                    {
+                        connection.Open();
+                        DbHelpers.ModifyRecords(command);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error deleting department: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    connection.Close();
+                }
+            }
+        }
+
+
     }
 }
