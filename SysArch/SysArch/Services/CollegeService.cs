@@ -14,7 +14,19 @@ namespace SysArch.Services
     {
         public static void ViewCollege(DataGridView dgv)
         {
-           
+            string query = "SELECT * FROM dbo.college";
+
+            using (SqlCommand command = new SqlCommand(query))
+            {
+                try
+                {
+                    DbHelpers.Fill(command, dgv);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error displaying college: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
