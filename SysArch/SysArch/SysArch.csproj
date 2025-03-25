@@ -54,12 +54,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\College.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\College.Designer.cs">
-      <DependentUpon>College.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Department.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,13 +84,16 @@
     <Compile Include="Forms\Modals\Department\UpdateDepartmentModal.Designer.cs">
       <DependentUpon>UpdateDepartmentModal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\NewCollegeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewCollegeForm.Designer.cs">
+      <DependentUpon>NewCollegeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CollegeService.cs" />
     <Compile Include="Services\DepartmentService.cs" />
-    <EmbeddedResource Include="Forms\College.resx">
-      <DependentUpon>College.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Department.resx">
       <DependentUpon>Department.cs</DependentUpon>
     </EmbeddedResource>
@@ -111,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Modals\Department\UpdateDepartmentModal.resx">
       <DependentUpon>UpdateDepartmentModal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewCollegeForm.resx">
+      <DependentUpon>NewCollegeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
