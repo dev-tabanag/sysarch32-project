@@ -12,6 +12,9 @@ namespace SysArch.Services
 {
     public class CollegeService
     {
-       
+        public static void ViewCollege(DataGridView dgv)
+        {
+           
+        }
     }
 }
