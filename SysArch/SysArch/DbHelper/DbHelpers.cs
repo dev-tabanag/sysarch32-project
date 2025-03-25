@@ -65,5 +65,22 @@ namespace SysArch.DbHelper
             }
         }
 
+        public static void ModifyRecords(SqlCommand command)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Connections.dbConnect))
+                {
+                    conn.Open();
+                    command.Connection = conn;
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error while executing query:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }
