@@ -171,6 +171,41 @@ namespace SysArch.Services
             }
         }
 
+        public static void SearchDepartmentAndCollege(string searchTerm, DataGridView dgv)
+        {
+            string query = @"
+                            SELECT
+                                d.id AS DepartmentID,
+                                d.department_name AS DepartmentName,
+                                d.department_code AS DepartmentCode,
+                                d.is_active AS DepartmentIsActive,
+                                c.id AS CollegeID,
+                                c.college_name AS CollegeName,
+                                c.college_code AS CollegeCode,
+                                c.is_active AS CollegeIsActive
+                            FROM dbo.department d
+                            INNER JOIN dbo.college c
+                                ON d.college_id = c.id
+                            WHERE d.department_name LIKE @SearchTerm
+                               OR d.department_code LIKE @SearchTerm
+                               OR c.college_name   LIKE @SearchTerm
+                               OR c.college_code   LIKE @SearchTerm
+                        ";
 
+            using (SqlCommand command = new SqlCommand(query))
+            {
+                command.Parameters.AddWithValue("@SearchTerm", "%" + searchTerm + "%");
+
+                try
+                {
+                    DbHelpers.Fill(command, dgv);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error searching department & college: {ex.Message}",
+                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }
