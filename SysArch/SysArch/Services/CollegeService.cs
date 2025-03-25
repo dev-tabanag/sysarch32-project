@@ -106,5 +106,28 @@ namespace SysArch.Services
             }
         }
 
+        public static void SearchCollege(string searchTerm, DataGridView dgv)
+        {
+            string query = @"SELECT * FROM dbo.college
+                     WHERE college_name LIKE @SearchTerm
+                     OR college_code LIKE @SearchTerm";
+
+            using (SqlConnection connection = new SqlConnection(Connections.dbConnect))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@SearchTerm", "%" + searchTerm + "%");
+
+                    try
+                    {
+                        DbHelpers.Fill(command, dgv);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error searching college: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
     }
 }
