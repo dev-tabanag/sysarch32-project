@@ -56,11 +56,11 @@ namespace SysArch.Services
         public static void UpdateCollege(int id, string collegeName, string collegeCode, int isActive)
         {
             string query = @"
-UPDATE dbo.college 
-SET college_name = @CollegeName,
-    college_code = @CollegeCode,
-    is_active = @IsActive
-WHERE id = @Id";
+                            UPDATE dbo.college 
+                            SET college_name = @CollegeName,
+                                college_code = @CollegeCode,
+                                is_active = @IsActive
+                            WHERE id = @Id";
 
             using (SqlConnection connection = new SqlConnection(Connections.dbConnect))
             {
