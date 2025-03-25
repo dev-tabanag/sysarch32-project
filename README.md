@@ -23,3 +23,5 @@ Step 6:
 ![image](https://github.com/user-attachments/assets/058cac64-4d83-436f-ac34-c6b12df46448)
 
 
+
+Git Workflow Explanation is to be discussed in the video because it is graphical as it is a GUI.
